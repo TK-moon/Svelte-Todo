@@ -1,0 +1,66 @@
+<script>
+	import { onMount, beforeUpdate, afterUpdate, onDestroy } from 'svelte';
+	import One from './one.svelte'
+	import Two from './two.svelte'
+	import Three from './three.svelte'
+	import Four from './four.svelte'
+
+	onMount(() => {
+		console.log('onMoute');
+	});
+	beforeUpdate(() => {
+		console.log('beforeUpdate');
+	});
+	afterUpdate(() => {
+		console.log('afterUpdate');
+	});
+	onDestroy(() => {
+		console.log('onDistroy');
+	});
+
+
+	let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+</script>
+
+<main>
+	<section>
+		{#each arr as item, index (`key-${index}`)}
+			{#if index & 1}
+				{item}
+			{:else}
+				-
+			{/if}
+		{/each}
+	</section>
+	<section>
+		<h1 class="title">1. Data</h1>
+		<One />
+	</section>
+	<section>
+		<h1 class="title">2. $</h1>
+		<Two />
+	</section>
+	<section>
+		<h1 class="title">3. Loop</h1>
+		<Three />
+	</section>
+	<section>
+		<h1 class="title">4. Ref</h1>
+		<Four />
+	</section>
+</main>
+
+<style lang="scss">
+	section {
+		width: 100vw;
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		border-bottom: 1px solid gray;
+		.title {
+			font-size: 20px;
+		}
+	}
+</style>
