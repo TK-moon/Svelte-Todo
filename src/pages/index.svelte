@@ -61,8 +61,10 @@
 		{/if}
 	</main>
 	<footer id="footer">
-		<TaskInput bind:value={inputValue} placeholder="Task"></TaskInput>
-		<AddButton onClick={addTask}></AddButton>
+		<div id="footerWrapper">
+			<TaskInput bind:value={inputValue} placeholder="Task"></TaskInput>
+			<AddButton onClick={addTask}></AddButton>
+		</div>
 	</footer>
 </div>
 
@@ -99,10 +101,12 @@
 	}
 	#footer {
 		position: fixed;
-		display: flex;
 		bottom: 20px;
-		padding: 0 20px;
 		width: 100%;
+	}
+	#footerWrapper {
+		display: flex;
+		padding: 0 20px;
 	}
 	.text-right {
 		text-align: right;
